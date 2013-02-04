@@ -101,32 +101,32 @@
             this.toolStripSeparator1,
             this.tsmiExit});
             this.tsmiFile.Name = "tsmiFile";
-            this.tsmiFile.Size = new System.Drawing.Size(45, 20);
+            this.tsmiFile.Size = new System.Drawing.Size(43, 20);
             this.tsmiFile.Text = "文件";
             // 
             // tsmiSelectVideoFile
             // 
             this.tsmiSelectVideoFile.Name = "tsmiSelectVideoFile";
-            this.tsmiSelectVideoFile.Size = new System.Drawing.Size(163, 22);
+            this.tsmiSelectVideoFile.Size = new System.Drawing.Size(160, 22);
             this.tsmiSelectVideoFile.Text = "选择视频";
             this.tsmiSelectVideoFile.Click += new System.EventHandler(this.tsmiSelectVideoFile_Click);
             // 
             // tsmiSelectMetaHeader
             // 
             this.tsmiSelectMetaHeader.Name = "tsmiSelectMetaHeader";
-            this.tsmiSelectMetaHeader.Size = new System.Drawing.Size(163, 22);
+            this.tsmiSelectMetaHeader.Size = new System.Drawing.Size(160, 22);
             this.tsmiSelectMetaHeader.Text = "选择信息头XML";
             this.tsmiSelectMetaHeader.Click += new System.EventHandler(this.tsmiSelectMetaHeader_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(157, 6);
             // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(163, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(160, 22);
             this.tsmiExit.Text = "退出";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
@@ -136,27 +136,27 @@
             this.tsmiNewMetaHeader,
             this.tsmiEditMetaHeader});
             this.tsmiMetaHeader.Name = "tsmiMetaHeader";
-            this.tsmiMetaHeader.Size = new System.Drawing.Size(58, 20);
+            this.tsmiMetaHeader.Size = new System.Drawing.Size(55, 20);
             this.tsmiMetaHeader.Text = "信息头";
             // 
             // tsmiNewMetaHeader
             // 
             this.tsmiNewMetaHeader.Name = "tsmiNewMetaHeader";
-            this.tsmiNewMetaHeader.Size = new System.Drawing.Size(163, 22);
+            this.tsmiNewMetaHeader.Size = new System.Drawing.Size(160, 22);
             this.tsmiNewMetaHeader.Text = "新建信息头XML";
             this.tsmiNewMetaHeader.Click += new System.EventHandler(this.tsmiNewMetaHeader_Click);
             // 
             // tsmiEditMetaHeader
             // 
             this.tsmiEditMetaHeader.Name = "tsmiEditMetaHeader";
-            this.tsmiEditMetaHeader.Size = new System.Drawing.Size(163, 22);
+            this.tsmiEditMetaHeader.Size = new System.Drawing.Size(160, 22);
             this.tsmiEditMetaHeader.Text = "编辑信息头XML";
             this.tsmiEditMetaHeader.Click += new System.EventHandler(this.tsmiEditMetaHeader_Click);
             // 
             // tsmiAbout
             // 
             this.tsmiAbout.Name = "tsmiAbout";
-            this.tsmiAbout.Size = new System.Drawing.Size(45, 20);
+            this.tsmiAbout.Size = new System.Drawing.Size(43, 20);
             this.tsmiAbout.Text = "关于";
             // 
             // gbVideoNMeta
@@ -227,6 +227,7 @@
             // mp4CompileWorker
             // 
             this.mp4CompileWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.mp4CompileWorker_DoWork);
+            this.mp4CompileWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.mp4CompileWorker_RunWorkerCompleted);
             // 
             // MainForm
             // 

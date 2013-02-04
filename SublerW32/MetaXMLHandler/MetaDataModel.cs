@@ -59,12 +59,34 @@ namespace SublerW32.MetaXMLHandler
         [XmlElement("Genre")]
         public String genre{get; set;}
 
-        [XmlElement("Chapters")]
+        [XmlIgnore()]
         public String chaptersFilePath{get; set;}
 
+        [XmlIgnore()]
         public List<KeyValuePair<String, String>> subtitles { get; set; }
 
-        public MetaDataModel() { }
+        public MetaDataModel()
+        {
+            this.title = "";
+            this.releaseDate = "";
+            this.cast = "";
+            this.director = "";
+            this.writer = "";
+            this.description = "";
+            this.longDescription = "";
+            this.posterPath = "";
+            this.mediaType = "";
+            this.contentRate = "";
+            this.hd = "";
+            this.tvShow = "";
+            this.seasonNum = "";
+            this.episodeNum = "";
+            this.tvNetwork = "";
+            this.genre = "";
+            this.rating = "";
+            this.chaptersFilePath = "";
+            this.subtitles = new List<KeyValuePair<string,string>>();
+        }
 
         public MetaDataModel(String title, String releaseDate,
                              String director, String writer,

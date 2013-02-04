@@ -51,15 +51,10 @@
             this.cbSubLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSubLang.FormattingEnabled = true;
             this.cbSubLang.Items.AddRange(new object[] {
-            "简体中文",
-            "繁体中文",
+            "中文",
             "英文",
             "日文",
-            "韩文",
-            "简中英双语",
-            "繁中英双语",
-            "中日双语",
-            "中韩双语"});
+            "韩文"});
             this.cbSubLang.Location = new System.Drawing.Point(16, 30);
             this.cbSubLang.Name = "cbSubLang";
             this.cbSubLang.Size = new System.Drawing.Size(121, 21);

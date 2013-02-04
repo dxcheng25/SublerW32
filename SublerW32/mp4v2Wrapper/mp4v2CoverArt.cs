@@ -30,6 +30,7 @@ namespace SublerW32.mp4v2Wrapper
             proc.Start();
             proc.BeginOutputReadLine();
             proc.OutputDataReceived += new DataReceivedEventHandler(proc_OutputDataReceived);
+            proc.WaitForExit();
 
         }
 

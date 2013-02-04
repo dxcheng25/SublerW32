@@ -21,16 +21,37 @@ namespace SublerW32.MP4BoxWrapper
 
         public void Import()
         {
+            //substitute lang code
+            if (mbtm.languageCode == "中文")
+            {
+                mbtm.languageCode = "chi";
+            }
+
+            else if (mbtm.languageCode == "英文")
+            {
+                mbtm.languageCode = "eng";
+            }
+
+            else if (mbtm.languageCode == "韩文")
+            {
+                mbtm.languageCode = "kor";
+            }
+
+            else if (mbtm.languageCode == "日文")
+            {
+                mbtm.languageCode = "jpn";
+            }
+
             switch (mbtm.trackType)
             {
                 case MP4BoxTrackModel.TrackType.Subtitle:
-                    MP4BoxArg = "-add " + mbtm.trackToAdd + ":name=" + mbtm.trackName + 
+                    MP4BoxArg = "-add " + quote(mbtm.trackToAdd) + ":name=" + quote(mbtm.trackName) + 
                                 ":hdlr=sbtl:lang=" + mbtm.languageCode +
-                                ":group=" + mbtm.groupID + " " + mbtm.originalVideo;
+                                ":group=" + mbtm.groupID + " " + quote(mbtm.originalVideo);
                     break;
 
                 case MP4BoxTrackModel.TrackType.Chapter:
-                    MP4BoxArg = "-add " + mbtm.trackToAdd + ":chap " + mbtm.originalVideo;
+                    MP4BoxArg = "-add " + quote(mbtm.trackToAdd) + ":chap " + quote(mbtm.originalVideo);
                     break;
 
                 default:
@@ -47,6 +68,7 @@ namespace SublerW32.MP4BoxWrapper
             proc.Start();
             proc.BeginOutputReadLine();
             proc.OutputDataReceived += new DataReceivedEventHandler(proc_OutputDataReceived);
+            proc.WaitForExit();
 
         }
 
@@ -56,6 +78,11 @@ namespace SublerW32.MP4BoxWrapper
             {
                 Console.WriteLine(e.Data + Environment.NewLine);
             }
+        }
+
+        private String quote(String s)
+        {
+            return "\"" + s + "\"";
         }
     }
 }

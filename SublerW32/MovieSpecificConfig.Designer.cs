@@ -39,28 +39,25 @@
             this.cbGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGenre.FormattingEnabled = true;
             this.cbGenre.Items.AddRange(new object[] {
-            "动作",
-            "战争",
-            "剧情",
+            "动作与冒险",
+            "日本动漫",
+            "经典电影",
             "喜剧",
-            "生活",
-            "魔幻",
-            "科幻",
+            "纪录片",
+            "剧情",
             "恐怖",
+            "独立电影",
+            "儿童与家庭",
+            "音乐剧",
+            "浪漫",
+            "科幻与幻想",
+            "短剧",
             "惊悚",
-            "悬疑",
-            "史诗",
-            "爱情",
-            "谍战",
-            "动画",
+            "体育",
             "西部",
-            "枪战",
-            "灾难",
-            "传记",
-            "幽默",
-            "讽刺",
-            "童话",
-            "幻想"});
+            "电视电影",
+            "日本院线",
+            "韩国院线"});
             this.cbGenre.Location = new System.Drawing.Point(12, 64);
             this.cbGenre.Name = "cbGenre";
             this.cbGenre.Size = new System.Drawing.Size(121, 21);

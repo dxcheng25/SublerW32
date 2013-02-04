@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SublerW32.MetaXMLHandler;
 using System.IO;
+using SublerW32.CoreData;
 
 namespace SublerW32
 {
@@ -34,38 +35,56 @@ namespace SublerW32
             if (opType == OPType.Modify)
             {
                 //Deserialize XML file
-                MetaXMLReader mxReader = new MetaXMLReader();
-                mdm = mxReader.readMetaHeaderFile(MHDFPath);
+                if (CoreData.CommonData.mdm != null)
+                    mdm = CoreData.CommonData.mdm;
+
+                else
+                {
+                    MetaXMLReader mxReader = new MetaXMLReader();
+                    mdm = mxReader.readMetaHeaderFile(MHDFPath);
+                }
+            }
+
+            else if (opType == OPType.New)
+            {
+                mdm = new MetaDataModel();
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            MetaXMLWriter xmlReader = new MetaXMLWriter(MHDFPath);
-            List<KeyValuePair<String, String>> subtitles = new List<KeyValuePair<string, string>>();
-            String tvNetwork = "";
-            String genre = "";
-            String rating = "";
-            String tvShow = "";
-            String episodeNum = "";
-            String seasonNum = "";
+            MetaXMLWriter xmlWriter = new MetaXMLWriter(MHDFPath);
+            MetaDataModel mdm = new MetaDataModel();
+
+            mdm.title = tbTitle.Text;
+            mdm.releaseDate = tbReleaseDate.Text;
+            mdm.director = tbDirector.Text;
+            mdm.writer = tbWriter.Text;
+            mdm.cast = tbCast.Text;
+            mdm.description = tbDescription.Text;
+            mdm.longDescription = tbLongDescription.Text;
+            mdm.posterPath = pbPoster.ImageLocation;
+            mdm.mediaType = cbMediaType.Text;
+            mdm.contentRate = cbContentRating.Text;
+            mdm.hd = cbHD.Text;
+            mdm.chaptersFilePath = tbChaptersFile.Text;
 
             foreach (ListViewItem item in lvSubtitles.Items)
             {
-                subtitles.Add(new KeyValuePair<String, String>(item.SubItems[0].Text, item.SubItems[1].Text));
+                mdm.subtitles.Add(new KeyValuePair<String, String>(item.SubItems[0].Text, item.SubItems[1].Text));
             }
 
             if (tvsc != null)
             {
-                tvShow = tvsc.tvShow;
-                tvNetwork = tvsc.tvNetwork;
-                seasonNum = tvsc.seasonNum;
-                episodeNum = tvsc.episodeNum;
+                mdm.tvShow = tvsc.tvShow;
+                mdm.tvNetwork = tvsc.tvNetwork;
+                mdm.seasonNum = tvsc.seasonNum;
+                mdm.episodeNum = tvsc.episodeNum;
 
                 if (cbMediaType.Text == "电视剧")
                 {
-                    genre = tvsc.genre;
-                    rating = tvsc.rating;
+                    mdm.genre = tvsc.genre;
+                    mdm.rating = tvsc.rating;
                 }
             }
 
@@ -73,25 +92,20 @@ namespace SublerW32
             {
                 if (cbMediaType.Text == "电影")
                 {
-                    genre = msc.genre;
-                    rating = msc.rating;
+                    mdm.genre = msc.genre;
+                    mdm.rating = msc.rating;
                 }
             }
 
-            xmlReader.SaveFile(tbTitle.Text, tbReleaseDate.Text, tbDirector.Text,
-                               tbWriter.Text, tbCast.Text, tbDescription.Text,
-                               tbLongDescription.Text, pbPoster.ImageLocation,
-                               cbMediaType.Text, cbContentRating.Text,
-                               cbHD.Text, tvShow, seasonNum, episodeNum,
-                               tvNetwork, rating, genre,
-                               tbChaptersFile.Text, subtitles);
+            xmlWriter.SaveFile(mdm);
+            CommonData.mdm = mdm;
 
             this.Close();
         }
 
         private void btnSelectChapters_Click(object sender, EventArgs e)
         {
-            openFileDialog.Filter = "章节文件 (*.xml)|*.xml";
+            openFileDialog.Filter = "章节文件 (*.txt)|*.txt|章节文件 (*.ogm)|*.ogm";
             openFileDialog.Title = "选择章节文件";
             openFileDialog.FileName = "";
 

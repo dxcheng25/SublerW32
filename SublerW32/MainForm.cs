@@ -141,8 +141,18 @@ namespace SublerW32
                 return;
             }
 
-            MetaXMLReader metaReader = new MetaXMLReader();
-            MetaDataModel mdm = metaReader.readMetaHeaderFile(tbMetaPath.Text);
+            MetaDataModel mdm;
+
+            if (CoreData.CommonData.mdm == null)
+            {
+                MetaXMLReader metaReader = new MetaXMLReader();
+                mdm = metaReader.readMetaHeaderFile(tbMetaPath.Text);
+            }
+
+            else
+            {
+                mdm = CoreData.CommonData.mdm;
+            }
 
             if (mdm.posterPath != "")
             {
@@ -171,7 +181,7 @@ namespace SublerW32
             }
 
             //chapters
-            if (mdm.chaptersFilePath.EndsWith(".txt"))
+            if ( mdm.chaptersFilePath.EndsWith(".txt") || mdm.chaptersFilePath.EndsWith(".ogm") )
             {
                 MP4BoxWrapper.MP4BoxTrackModel mtm
                         = new MP4BoxWrapper.MP4BoxTrackModel();
@@ -183,6 +193,11 @@ namespace SublerW32
 
                 lIT.Add(new MP4BoxWrapper.ImportTrack(mtm));
             }
+
+            gbVideoNMeta.Enabled = false;
+            btnCompile.Enabled = false;
+            pbCompileProgress.Style = ProgressBarStyle.Marquee;
+            pbCompileProgress.MarqueeAnimationSpeed = 100;
 
             mp4CompileWorker.RunWorkerAsync();
         }
@@ -203,6 +218,15 @@ namespace SublerW32
             {
                 it.Import();
             }
+        }
+
+        private void mp4CompileWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            gbVideoNMeta.Enabled = true;
+            btnCompile.Enabled = true;
+            pbCompileProgress.MarqueeAnimationSpeed = 0;
+            CoreData.CommonData.mdm = null;
+            lIT.Clear();
         }
     }
 }

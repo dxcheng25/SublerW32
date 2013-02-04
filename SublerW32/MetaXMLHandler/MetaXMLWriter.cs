@@ -16,31 +16,16 @@ namespace SublerW32.MetaXMLHandler
             this.MHDFPath = MHDFPath;
         }
 
-        public void SaveFile(String title, String releaseDate, 
-                             String director, String writer,
-                             String cast, String description,
-                             String longDescription, String posterPath,
-                             String mediaType, String contentRate,
-                             String hd, String tvShow, 
-                             String seasonNum, String episodeNum, String tvNetwork,
-                             String rating, String genre,
-                             String chaptersFilePath, List<KeyValuePair<String, String>> subtitles)
+        public void SaveFile( MetaDataModel mdm )
         {
-            if (posterPath == null)
+            if (mdm.posterPath == null)
             {
-                posterPath = "";
+                mdm.posterPath = "";
             }
-
-            MetaDataModel metaDataModel = new MetaDataModel(title, releaseDate, director, writer,
-                                                            cast, description, longDescription,
-                                                            posterPath, mediaType, contentRate,
-                                                            hd, tvShow, seasonNum, episodeNum,
-                                                            tvNetwork, rating, genre, chaptersFilePath,
-                                                            subtitles);
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(MetaDataModel));
             TextWriter textWriter = new StreamWriter(MHDFPath);
-            xmlSerializer.Serialize(textWriter, metaDataModel);
+            xmlSerializer.Serialize(textWriter, mdm);
             textWriter.Close();
         }
     }

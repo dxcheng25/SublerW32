@@ -15,7 +15,7 @@ namespace SublerW32.mp4v2Wrapper
         public mp4v2Tagging(MetaXMLHandler.MetaDataModel mdm, String pathToMp4File)
         {
             mp4tagsPath = Application.StartupPath + "\\libs\\mp4tags.exe";
-            mp4tagsArg = "-genre " + mdm.genre + " -longdesc " + quote(mdm.longDescription) +
+            mp4tagsArg = "-song " + quote(mdm.title) + " -genre " + mdm.genre + " -longdesc " + quote(mdm.longDescription) +
                          " -description " + quote(mdm.description) + " -rating " + 
                          mdm.contentRate + " -year " + mdm.releaseDate;
 
@@ -36,6 +36,11 @@ namespace SublerW32.mp4v2Wrapper
                               mdm.seasonNum;
             }
 
+            else if (mdm.mediaType == "电影")
+            {
+                mp4tagsArg += " -type movie";
+            }
+
             mp4tagsArg += " " + quote(pathToMp4File);
         }
 
@@ -51,6 +56,7 @@ namespace SublerW32.mp4v2Wrapper
             proc.Start();
             proc.BeginOutputReadLine();
             proc.OutputDataReceived += new DataReceivedEventHandler(proc_OutputDataReceived);
+            proc.WaitForExit();
 
         }
 
