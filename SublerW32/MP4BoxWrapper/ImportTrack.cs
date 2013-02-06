@@ -24,22 +24,22 @@ namespace SublerW32.MP4BoxWrapper
             //substitute lang code
             if (mbtm.languageCode == "中文")
             {
-                mbtm.languageCode = "chi";
+                mbtm.languageCode = "zh";
             }
 
             else if (mbtm.languageCode == "英文")
             {
-                mbtm.languageCode = "eng";
+                mbtm.languageCode = "en";
             }
 
             else if (mbtm.languageCode == "韩文")
             {
-                mbtm.languageCode = "kor";
+                mbtm.languageCode = "ko";
             }
 
             else if (mbtm.languageCode == "日文")
             {
-                mbtm.languageCode = "jpn";
+                mbtm.languageCode = "jp";
             }
 
             switch (mbtm.trackType)
