@@ -1,0 +1,12 @@
+D:\Projects\SublerW32\SublerW32\bin\Debug\SublerW32.exe
+D:\Projects\SublerW32\SublerW32\bin\Debug\SublerW32.pdb
+D:\Projects\SublerW32\SublerW32\obj\Debug\SublerW32.csprojResolveAssemblyReference.cache
+D:\Projects\SublerW32\SublerW32\obj\Debug\SublerW32.AddSubtitle.resources
+D:\Projects\SublerW32\SublerW32\obj\Debug\SublerW32.MovieSpecificConfig.resources
+D:\Projects\SublerW32\SublerW32\obj\Debug\SublerW32.MainForm.resources
+D:\Projects\SublerW32\SublerW32\obj\Debug\SublerW32.NewMetaHeader.resources
+D:\Projects\SublerW32\SublerW32\obj\Debug\SublerW32.Properties.Resources.resources
+D:\Projects\SublerW32\SublerW32\obj\Debug\SublerW32.TVSpecificConfig.resources
+D:\Projects\SublerW32\SublerW32\obj\Debug\SublerW32.csproj.GenerateResource.Cache
+D:\Projects\SublerW32\SublerW32\obj\Debug\SublerW32.exe
+D:\Projects\SublerW32\SublerW32\obj\Debug\SublerW32.pdb
